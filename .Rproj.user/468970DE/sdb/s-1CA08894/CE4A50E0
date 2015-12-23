@@ -1,0 +1,16 @@
+{
+    "contents" : "Interactive Learning of Linear and Parabola Functions \n========================================================\nauthor: Elisa Garcia Corisco\n\nGoal\n========================================================\n\nThe shiny app created in the previous execsice has been developed in order that kids can learn easily how the linear and the parabola function behave.\n\n- The user can change the parameters of the function\n- The functions are visualized\n  + the previous function (red)\n  + the new function (blue)\n\nLinear\n========================================================\n\nThe function ```lineal_function``` is called to generate the data to plot the function.\n\n```{r, echo=FALSE}\nsource(\"./geom_smooth_funct.R\")\nlibrary(ggplot2)\n```\n```{r}\nlineal_function <- function(a, b)\n    {\n      x <- seq(-5, 5, 0.5)\n      y <- a*x + b\n      y\n    }\n\nm <- 1\nn <- 2\ny <- lineal_function(m, n)\n```\n\nLinear - plot\n========================================================\n```{r, echo=F}\ng <- ggplot(data.frame( x =  seq(-5, 5, 0.5), y = y ), aes(x = x, y = y))\ng <- g + geom_line()\ng <- g + stat_smooth_func(geom=\"text\",method=\"lm\",hjust=0,parse=TRUE)\ng <- g + xlim(c(-5, 5))\ng <- g + ylim(c(-8, 8))\ng\n```\n\nParabola\n========================================================\n\nThe function ```parabola``` is called to generate the data to plot the function.\n\n```{r}\nparabola <- function(a, b, c)\n{\n  x <- seq(-5, 5, 0.5)\n  y <- a*x^2 + b*x + c\n  y\n} \n\na <- 1\nb <- 2\nc <- 0\ny <- parabola(a, b, c)\n```\n\nParabola - plot\n========================================================\n\n```{r, echo=F}\ng <- ggplot(data.frame( x =  seq(-5, 5, 0.5), y = y ), aes(x = x, y = y))\ng <- g + geom_line()\ng <- g + xlim(c(-5, 5))\ng <- g + ylim(c(-8, 8))\ng\n```\n\nThank you\n========================================================\nAny question? =)\n",
+    "created" : 1450835236967.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "1329869183",
+    "id" : "CE4A50E0",
+    "lastKnownWriteTime" : 1450836262,
+    "path" : "~/Documents/dataProducts/Presentation.Rpres",
+    "project_path" : "Presentation.Rpres",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_presentation"
+}

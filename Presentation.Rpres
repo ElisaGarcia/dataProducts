@@ -1,0 +1,80 @@
+Interactive Learning of Linear and Parabola Functions 
+========================================================
+author: Elisa Garcia Corisco
+
+Goal
+========================================================
+
+The shiny app created in the previous execsice has been developed in order that kids can learn easily how the linear and the parabola function behave.
+
+- The user can change the parameters of the function
+- The functions are visualized
+  + the previous function (red)
+  + the new function (blue)
+
+Linear
+========================================================
+
+The function ```lineal_function``` is called to generate the data to plot the function.
+
+```{r, echo=FALSE}
+source("./geom_smooth_funct.R")
+library(ggplot2)
+```
+```{r}
+lineal_function <- function(a, b)
+    {
+      x <- seq(-5, 5, 0.5)
+      y <- a*x + b
+      y
+    }
+
+m <- 1
+n <- 2
+y <- lineal_function(m, n)
+```
+
+Linear - plot
+========================================================
+```{r, echo=F}
+g <- ggplot(data.frame( x =  seq(-5, 5, 0.5), y = y ), aes(x = x, y = y))
+g <- g + geom_line()
+g <- g + stat_smooth_func(geom="text",method="lm",hjust=0,parse=TRUE)
+g <- g + xlim(c(-5, 5))
+g <- g + ylim(c(-8, 8))
+g
+```
+
+Parabola
+========================================================
+
+The function ```parabola``` is called to generate the data to plot the function.
+
+```{r}
+parabola <- function(a, b, c)
+{
+  x <- seq(-5, 5, 0.5)
+  y <- a*x^2 + b*x + c
+  y
+} 
+
+a <- 1
+b <- 2
+c <- 0
+y <- parabola(a, b, c)
+```
+
+Parabola - plot
+========================================================
+
+```{r, echo=F}
+g <- ggplot(data.frame( x =  seq(-5, 5, 0.5), y = y ), aes(x = x, y = y))
+g <- g + geom_line()
+g <- g + xlim(c(-5, 5))
+g <- g + ylim(c(-8, 8))
+g
+```
+
+Thank you
+========================================================
+Any question? =)
